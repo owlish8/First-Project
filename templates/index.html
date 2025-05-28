@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Μετατροπή Αρχείων</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script>
+        function setConversionType(type) {
+            let form = document.getElementById("convert-form");
+            form.action = type;
+            form.method = "post";
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-primary p-3">
+        <a class="navbar-brand text-white" href="#">Μετατροπή PDF & Word</a>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Μετατροπή Αρχείων</h2>
+
+        <form id="convert-form" method="post" enctype="multipart/form-data" class="text-center">
+            <input type="file" name="file" class="form-control mt-3" required>
+
+            <!-- Άλλα κουμπιά -->
+            <button type="submit" class="btn btn-success mt-3 me-2" onclick="setConversionType('/convert/pdf-to-word')">Μετατροπή σε Word</button>
+            <button type="submit" class="btn btn-danger mt-3 me-2" onclick="setConversionType('/convert/word-to-pdf')">Μετατροπή σε PDF</button>
+            <button type="submit" class="btn btn-primary mt-3 me-2" onclick="setConversionType('/split/pdf')">Χώρισε PDF</button>
+
+            <!-- Κεντραρισμένο κουμπί εικόνας -->
+            <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-warning" onclick="setConversionType('/convert/image-to-pdf')">
+                    Εικόνα σε PDF
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
